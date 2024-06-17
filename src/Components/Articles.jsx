@@ -39,7 +39,7 @@ export function Articles() {
             </Typography>
             </div>
             <Typography variant="body2" color="text.secondary" className="author-text">
-              Author: {article.author}
+              The Author: {article.author}
             </Typography>
           </CardContent>
           <CardActions className="item-buttons">
