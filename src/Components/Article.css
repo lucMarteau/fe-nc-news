@@ -1,0 +1,16 @@
+li {
+  list-style: none;
+}
+
+.item-card {
+  display: flex;
+  flex-direction: column;
+  width: 25rem;
+  height: 25rem;
+}
+
+.item-buttons {
+  align-self: center;
+  margin-top: auto;
+
+}
