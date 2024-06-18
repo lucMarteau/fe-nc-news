@@ -3,6 +3,7 @@ import { Header } from './Components/Header'
 import "./Components/Header.css"
 import { Routes, Route } from "react-router-dom"
 import { Articles } from "./Components/Articles"
+import { ArticlePage } from "./Components/ArticlePage"
 
 function App() {
 
@@ -13,9 +14,10 @@ function App() {
 
       <Routes>
         <Route path="/" element={
-          <ul>
           <Articles />
-          </ul>
+          } />
+          <Route path="/articles/:article_id" element={
+          <ArticlePage />
           } />
       </Routes>
     </>
