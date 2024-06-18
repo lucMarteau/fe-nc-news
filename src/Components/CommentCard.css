@@ -5,19 +5,19 @@
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
-  width: 25rem;
+  width: 45rem;
   height: 15rem;
   padding: 2rem;
 }
 
 .comment-button {
-  align-self: center;
+  align-self:flex-start;
   margin-top: 2rem;
   color:blue;
 
 }
 
 .vote-button {
-  align-self: center;
+  align-self:flex-start;
   color:blue
 }
