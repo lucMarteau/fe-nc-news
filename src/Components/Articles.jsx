@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getArticles } from "../Utilities/api";
-import "./Article.css";
+import "./Articles.css";
 import ArticleCard from './ArticleCard';
 
 export function Articles() {

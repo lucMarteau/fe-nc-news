@@ -10,7 +10,7 @@ export function Header({}) {
         <Link className="active" href="#home" to={"/"}>
           Articles
         </Link>
-        <a href="#contact">Comments</a>
+        <a href="#contact">My Articles</a>
         <a href="#about">Account</a>
       </div>
     </div>
