@@ -10,12 +10,12 @@ export default function CommentCard({ comment, article_id }) {
 
 
   const handleClick = () => {
-    setVotes((prevVotes) => prevVotes + 1)
+    setVotes((currentVotes) => currentVotes + 1)
     patchArticleVotes(article_id, 1)
     .catch((error) => {
 
-      setVotes((prevVotes) => prevVotes - 1)
-      setError(error.message)
+      setVotes((currentVotes) => currentVotes - 1)
+      setError("...Error")
     })
   }
 
