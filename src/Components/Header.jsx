@@ -1,13 +1,18 @@
+import { Link } from 'react-router-dom';
 
-export function Header({ searchTerm }) {
+export function Header({}) {
   return (
-      <div className="header">
-<a href="#default" className="logo">NC News</a>
-<div className="header-right">
-  <a className="active" href="#home">Articles</a>
-  <a href="#contact">Comments</a>
-  <a href="#about">Account</a>
-</div>
-</div>
-  )
+    <div className="header">
+      <Link href="#default" className="logo" to={"/"}>
+        NC News
+      </Link>
+      <div className="header-right">
+        <Link className="active" href="#home" to={"/"}>
+          Articles
+        </Link>
+        <a href="#contact">Comments</a>
+        <a href="#about">Account</a>
+      </div>
+    </div>
+  );
 }
