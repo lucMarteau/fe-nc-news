@@ -24,7 +24,7 @@ export function ArticlePage() {
       setError(error.message);
       setLoading(false);
     });
-  }, [article])
+  }, [article_id])
 
   useEffect(() => {
     if (article) {
@@ -36,7 +36,7 @@ export function ArticlePage() {
           setError(error.message);
         });
     }
-  }, [article_id]);
+  }, [article]);
 
   if (loading) return <p>...loading</p>;
   if (error) return <p>...error: {error}</p>;
