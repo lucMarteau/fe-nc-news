@@ -47,7 +47,6 @@ export function ArticlePage() {
         <h2>{article.title}</h2>
         <img className="article-image" src={article.article_img_url} alt={article.title} />
         <p className="article-body">{article.body}</p>
-        <button>Leave a comment</button>
         <h3>User comments:</h3>
         <ul>
           {comments.map((comment) => (
