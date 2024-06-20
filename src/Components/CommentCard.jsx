@@ -43,13 +43,9 @@ export default function CommentCard({ comment, article_id }) {
     <div className="comment-card">
       <p>User name: {comment.author}</p>
       <p>{comment.body}</p>
-      <CommentInput onCommentSubmit={handleCommentSubmit} />
-      <div className="comments-list">
-        {comments.map((comment, index) => (
-          <p key={index}>My Comment: {comment}</p>
-        ))}
-      </div>
-      <Button Button variant="contained" onClick={handleClick}>
+
+      <button className="vote-button" onClick={handleClick}>
+
         Vote
       </Button>
       {undo && (
