@@ -5,6 +5,7 @@ import { useState } from "react";
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import { deleteArticleComment } from "../Utilities/api";
 
 export default function CommentCard({ comment, article_id }) {
   const [votes, setVotes] = useState(comment.votes);
@@ -30,6 +31,7 @@ export default function CommentCard({ comment, article_id }) {
     });
     setUndo(true);
   };
+  
 
   return (
     <div className="comment-card">
@@ -59,6 +61,7 @@ export default function CommentCard({ comment, article_id }) {
         </Stack>
       )}
       <p>Votes total: {votes}</p>
+      <button>Delete</button>
     </div>
   );
 }
