@@ -65,6 +65,7 @@ export function ArticlePage() {
           alt={article.title}
         />
         <p className="article-body">{article.body}</p>
+
         <form>
           <input
             value={newComment}
@@ -75,6 +76,7 @@ export function ArticlePage() {
           <button onClick={handleCommentSubmit}>Leave a comment</button>
           
         </form>
+
         <h3>User comments:</h3>
         <ul>
           {comments.map((comment) => (

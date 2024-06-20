@@ -5,15 +5,18 @@ import { useState } from "react";
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import CommentInput from "./CommentInput";
 
 export default function CommentCard({ comment, article_id }) {
   const [votes, setVotes] = useState(comment.votes);
   const [error, setError] = useState(null);
   const [undo, setUndo] = useState(false);
+  const [comments,setComments] = useState([])
 
   const handleUndo = () => {
     setVotes((currentVotes) => currentVotes - 1);
-    patchArticleVotes(article_id, -1).catch((error) => {
+    patchArticleVotes(article_id, -1)
+    .catch((error) => {
       setVotes((currentVotes) => currentVotes + 1);
       setError("An error occured when trying to undo");
     });
@@ -22,7 +25,8 @@ export default function CommentCard({ comment, article_id }) {
 
   const handleClick = () => {
     setVotes((currentVotes) => currentVotes + 1);
-    patchArticleVotes(article_id, 1).catch((error) => {
+    patchArticleVotes(article_id, 1)
+    .catch((error) => {
       setVotes((currentVotes) => currentVotes - 1);
       setError(
         "An error has occured when trying to contact the server to upload your vote"
@@ -31,13 +35,19 @@ export default function CommentCard({ comment, article_id }) {
     setUndo(true);
   };
 
+  const handleCommentSubmit = (newComment) => {
+    setComments([...comments, newComment])
+  }
+
   return (
     <div className="comment-card">
       <p>User name: {comment.author}</p>
       <p>{comment.body}</p>
+
       <button className="vote-button" onClick={handleClick}>
+
         Vote
-      </button>
+      </Button>
       {undo && (
         <Stack sx={{ width: "100%" }} spacing={2}>
           <Alert
