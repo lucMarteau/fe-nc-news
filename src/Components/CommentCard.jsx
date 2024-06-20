@@ -35,7 +35,6 @@ export default function CommentCard({ comment, article_id }) {
     <div className="comment-card">
       <p>User name: {comment.author}</p>
       <p>{comment.body}</p>
-      <button className="comment-button">Comment</button>
       <button className="vote-button" onClick={handleClick}>
         Vote
       </button>
