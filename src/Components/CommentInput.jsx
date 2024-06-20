@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import React from "react";
 import { useState } from "react";
 import { Alert } from "@mui/material";
+import { postArticleComment } from "../Utilities/api";
 
 
 export default function CommentInput({ onCommentSubmit }) {
@@ -15,9 +16,12 @@ export default function CommentInput({ onCommentSubmit }) {
   const [isPosted, setIsPosted] = useState(false);
 
   const handleSubmit = () => {
-    onCommentSubmit(newComment);
-    setIsPosted(true);
-    setNewComment("");
+    postArticleComment(newComment)
+    .then((commentData) => {
+      onCommentSubmit(commentData);
+      setIsPosted(true);
+      setNewComment("");
+    })
   };
   return (
     <Box

@@ -29,10 +29,14 @@ export const patchArticleVotes = (article_id, incrementVote) => {
       return response.data;
     });
 };
-export const postArticleComment = (article_id) => {
+export const postArticleComment = (article_id, commentData) => {
+  console.log(`Posting comment to article ${article_id}:`, commentData)
   return axios
   .post(`https://be-nc-news-4mam.onrender.com/api/articles/${article_id}/comments`, {username: "grumpy19", body: commentData })
   .then((response) => {
     return response.data.commentData
   })
+}
+export const deleteArticleComment = ( comment_id ) => {
+  return axios.delete(`https://be-nc-news-4mam.onrender.com/api/comments/${comment_id}`)
 }
