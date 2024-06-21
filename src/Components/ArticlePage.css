@@ -9,3 +9,9 @@
   display: flex;
 
 }
+.item-card {
+  display: flex;
+  flex-direction: column;
+  width: 35rem;
+  height: 25rem;
+}

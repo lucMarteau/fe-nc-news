@@ -13,17 +13,9 @@ export default function CommentCard({ comment, article_id }) {
   const [votes, setVotes] = useState(comment.votes);
   const [error, setError] = useState(null);
   const [undo, setUndo] = useState(false);
-  const [comments,setComments] = useState([])
+  const [deleted, setDeleted] = useState(false)
 
-  const handleUndo = () => {
-    setVotes((currentVotes) => currentVotes - 1);
-    patchArticleVotes(article_id, -1)
-    .catch((error) => {
-      setVotes((currentVotes) => currentVotes + 1);
-      setError("An error occured when trying to undo");
-    });
-    setUndo(false);
-  };
+ 
 
   const handleClick = () => {
     setVotes((currentVotes) => currentVotes + 1);
@@ -37,19 +29,46 @@ export default function CommentCard({ comment, article_id }) {
     setUndo(true);
   };
   
+  const handleUndo = () => {
+    setVotes((currentVotes) => currentVotes - 1);
+    patchArticleVotes(article_id, -1)
+    .catch((error) => {
+      setVotes((currentVotes) => currentVotes + 1);
+      setError(
+        "An error occured when trying to undo"
+      );
+    });
+    setUndo(false);
+  };
+  
 
-  const handleCommentSubmit = (newComment) => {
-    setComments([...comments, newComment])
+  const handleCommentDelete = () => {
+    setDeleted(true)
+    deleteArticleComment(comment.comment_id)
+    .catch((error) => {
+      setDeleted(false)
+      setError(
+        "Something has gone wrong. Your comment has not been deleted"
+      );
+    });
   }
 
+  if (deleted) return null;
+
   return (
+    
     <div className="comment-card">
+      
       <p>User name: {comment.author}</p>
       <p>{comment.body}</p>
+      <p>
+        {comment.author === "grumpy19" && (
+      <Button variant="contained" color="error" onClick={handleCommentDelete}>Delete my comment</Button>
+      )}
+        </p>
+      <Button variant="contained" className="vote-button" onClick={handleClick}>
 
-      <button className="vote-button" onClick={handleClick}>
-
-        Vote
+        Like
       </Button>
       {undo && (
         <Stack sx={{ width: "100%" }} spacing={2}>
@@ -61,7 +80,7 @@ export default function CommentCard({ comment, article_id }) {
               </Button>
             }
           >
-            You have succesfully contributed your vote to this article
+            You have succesfully liked this comment
           </Alert>
         </Stack>
       )}
@@ -72,7 +91,7 @@ export default function CommentCard({ comment, article_id }) {
         </Stack>
       )}
       <p>Votes total: {votes}</p>
-      <button>Delete</button>
+      
     </div>
   );
 }

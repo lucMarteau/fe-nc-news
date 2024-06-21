@@ -38,26 +38,24 @@ export function ArticlePage() {
     }
   }, [article]);
 
+  // add a spinner to signify uploading of comment or optimistically render. Extract to comment Form component.
   const handleCommentSubmit = (event) => {
     event.preventDefault();
-    if (newComment.length !== 0) {
+    if (newComment.length > 3) {
       postArticleComment(article_id, newComment)
         .then((response) => {
-          console.log("Comment:", response);
+          console.log("posted", response)
           setComments((comments) => [response, ...comments]);
           setNewComment("");
         })
         .catch((error) => {
           setError(error.message);
         });
+    } else {
+      setError("Your comment needs a minimum of 3 charcters!"); 
     }
   };
-  const handleDelete = () => {
-    deleteArticleComment(comment.comment_id) 
-    .then(() => {
-      setComments([comment, ...comments])
-    })
-  }
+ 
   if (loading) return <p>...loading</p>;
   if (error) return <p>...error: {error}</p>;
 
@@ -82,6 +80,11 @@ export function ArticlePage() {
           <button onClick={handleCommentSubmit}>Leave a comment</button>
           
         </form>
+        {error && (
+        <Stack sx={{ width: "100%" }} spacing={2}>
+          <Alert severity="error">{error}</Alert>
+        </Stack>
+      )}
 
         <h3>User comments:</h3>
         <ul>
