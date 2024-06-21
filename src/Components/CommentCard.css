@@ -1,8 +1,23 @@
 
+
 .comment-card {
   border-style: solid;
   border-radius: 1rem;
-  margin: 16px;
+  display: flex;
+  flex-direction: column;
+  width: 45rem;
+  height: 17rem;
   padding: 2rem;
-  min-width: 52rem;
+}
+
+.comment-button {
+  align-self:flex-start;
+  margin-top: 2rem;
+  color:blue;
+
+}
+
+.vote-button {
+  align-self:flex-start;
+  color:blue
 }
