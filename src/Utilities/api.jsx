@@ -42,3 +42,10 @@ export const deleteArticleComment = ( comment_id ) => {
   return axios
   .delete(`https://be-nc-news-4mam.onrender.com/api/comments/${comment_id}`)
 }
+export const getArticleTopics = ( topic ) => {
+  return axios
+    .get("https://be-nc-news-4mam.onrender.com/api/topics")
+    .then((response) => {
+      return response.data.topic;
+    });
+};
